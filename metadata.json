@@ -1,0 +1,5 @@
+{
+  "name": "ARI Blood Net",
+  "description": "A real-time blood donation and emergency request platform connecting donors with those in need.",
+  "requestFramePermissions": ["geolocation"]
+}

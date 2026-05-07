@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "profiles": {
+      "title": "User Profile",
+      "description": "Stores user profile information and donor status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "User ID (auth.uid)" },
+        "full_name": { "type": "string", "description": "Full name of the user" },
+        "email": { "type": "string", "format": "email", "description": "User email" },
+        "phone": { "type": "string", "description": "User phone number" },
+        "district": { "type": "string", "description": "User district" },
+        "thana": { "type": "string", "description": "User thana" },
+        "is_donor": { "type": "boolean", "description": "Whether the user is a donor" },
+        "donor_id": { "type": "string", "description": "ID of the linked donor document" }
+      },
+      "required": ["id", "full_name", "email"]
+    },
+    "donors": {
+      "title": "Blood Donor",
+      "description": "Stores detailed blood donor information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Donor ID" },
+        "user_id": { "type": "string", "description": "Linked User ID" },
+        "full_name": { "type": "string", "description": "Full name" },
+        "blood_type": { "type": "string", "enum": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] },
+        "date_of_birth": { "type": "string", "format": "date" },
+        "gender": { "type": "string", "enum": ["Male", "Female", "Other"] },
+        "district": { "type": "string" },
+        "thana": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "weight_kg": { "type": "integer" },
+        "last_donation_date": { "type": "string", "format": "date" },
+        "medical_conditions": { "type": "string" },
+        "organ_donor": { "type": "boolean" },
+        "availability": { "type": "string", "enum": ["Available", "Not Available", "Emergency Only"] },
+        "verified": { "type": "boolean" },
+        "total_donations": { "type": "integer" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" }
+      },
+      "required": ["full_name", "blood_type", "district", "thana", "phone", "email"]
+    }
+  }
+}

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.maateen.me/siyam-rupali/font.css');
+@import "tailwindcss";
+
+@theme {
+  --color-background: #f8f9ff;
+  --color-on-background: #121c2a;
+  --color-surface: #f8f9ff;
+  --color-surface-container-low: #eff4ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #dee9fc;
+  --color-surface-container-highest: #d9e3f6;
+  --color-primary: #b70011;
+  --color-primary-container: #dc2626;
+  --color-primary-fixed-dim: #ffb4ac;
+  --color-on-primary-fixed: #410002;
+  --color-secondary: #b02d29;
+  --color-on-surface: #121c2a;
+  --color-on-surface-variant: #5c403c;
+  --color-outline-variant: #e6bdb8;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+
+  --font-sans: "Inter", "Siyam Rupali", "SiyamRupali", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-size: 13px;
+    @screen md {
+      font-size: 14px;
+    }
+  }
+  body {
+    @apply bg-background text-on-background font-sans selection:bg-primary-fixed-dim selection:text-on-primary-fixed leading-tight antialiased;
+  }
+  html[lang="bn"] body {
+    font-family: "Siyam Rupali", "SiyamRupali", sans-serif;
+  }
+  h1 { @apply text-2xl font-black tracking-tighter leading-[1.1] mb-1; }
+  h2 { @apply text-xl font-black tracking-tight leading-[1.1] mb-1; }
+  h3 { @apply text-lg font-black tracking-tight leading-[1.1] mb-0.5; }
+  h4 { @apply text-base font-bold tracking-tight leading-[1.1]; }
+}
+
+@layer components {
+  .editorial-gradient {
+    background: linear-gradient(135deg, #b70011 0%, #dc2626 100%);
+  }
+
+  .glass-nav {
+    @apply bg-white/95 backdrop-blur-md border-b border-surface-container-high h-12 md:h-14 flex items-center;
+  }
+
+  .compact-card {
+    @apply bg-surface-container-lowest rounded-lg shadow-sm border border-surface-container-high p-2 md:p-2.5 transition-all hover:shadow-md;
+  }
+
+  .data-grid {
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3;
+  }
+
+  .label-mini {
+    @apply text-[9px] font-black uppercase tracking-widest text-on-surface-variant/60 leading-none mb-0.5;
+  }
+
+  .value-compact {
+    @apply text-xs md:text-sm font-bold text-on-surface leading-tight;
+  }
+
+  .btn-compact {
+    @apply h-8 md:h-9 px-3 md:px-4 rounded-lg font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center justify-center gap-1.5 transition-all active:scale-95;
+  }
+
+  .input-compact {
+    @apply w-full h-9 md:h-10 px-3 bg-surface-container-low rounded-lg font-bold outline-none border border-transparent focus:border-primary text-xs md:text-sm transition-all;
+  }
+
+  .emergency-pulse {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    animation: pulse-red 2s infinite;
+  }
+
+  @keyframes pulse-red {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+    70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+  }
+
+  .locked-blur {
+    @apply blur-[8px] select-none pointer-events-none;
+  }
+}
+
+/* Leaflet Fixes */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
